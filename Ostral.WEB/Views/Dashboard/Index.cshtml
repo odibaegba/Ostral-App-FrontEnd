@@ -1,0 +1,64 @@
+﻿@model DashboardVM
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "_Layout";
+    const string categories = "Categories";
+    const string recommended = "Recommended";
+    const string popularCourses = "Popular Courses";
+}
+
+<section class="position-relative" style="height: 428px; background-image: url('images/Rectangle 13.png'); background-repeat: no-repeat; background-size: cover;">
+    <div class="position-absolute rounded"
+         style="background: #101828; height: 232px; width: 517px; left: 148px; bottom: 90px">
+        <div class="border-start m-4 ps-3" style="border-color: #FAC515; border-width: 1rem;">
+            <p class="text-light" style="font-weight:600; font-size: 2.3rem">
+                Learn what you love anytime, with the
+                best tutors.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<section class="container mt-5">
+    <partial name="Components/SectionHeader" model="@recommended"/>
+    <div class="row row-cols-4 g-3">
+        @foreach (var course in Model.RecommendedCourses)
+        {
+            <partial name="Components/CourseListItem" model="course"/>
+        }
+    </div>
+</section>
+
+<section class="py-5 mt-5" style="background-color: #F4F3FF;">
+    <div class="container">
+
+        <div class="d-flex mb-1 justify-content-between align-items-baseline">
+            <partial name="Components/SectionHeader" model="@categories"/>
+            <a asp-controller="Course" asp-action="Index" class="text-decoration-none">See all</a>
+        </div>
+
+        <div class="row g-3">
+            @foreach (var category in Model.Categories)
+            {
+                <div class="col-3">
+                    <div class="bg-blue text-light rounded position-relative"
+                         style="position: relative; background: #3E1C96; height: 7.5rem;">
+                        <p class="position-absolute bottom-0" style="left: 8%">@category.Name</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="container mt-5">
+    <partial name="Components/SectionHeader" model="@popularCourses"/>
+    <div class="row row-cols-3 g-3">
+        @foreach (var course in Model.PopularCourses)
+        {
+            <partial name="Components/CourseListItem" model="course"/>
+        }
+    </div>
+</section>

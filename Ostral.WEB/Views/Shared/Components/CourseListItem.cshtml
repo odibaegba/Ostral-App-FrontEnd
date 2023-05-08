@@ -1,0 +1,19 @@
+﻿@model CourseListItem
+
+<div class="col">
+    <a class="d-block text-dark text-decoration-none card shadow-sm border-0 bg-white p-2" asp-controller="Course" asp-action="Details" asp-route-id="@Model.Id">
+        <img class="img-fluid card-img-top bd-placeholder w-100 h-auto thumbnail" src="@Model.ImageUrl"
+             alt="">
+        <div class="card-body p-0">
+            <p class="fw-bold ">@Model.Name</p>
+            <div class="d-flex justify-content-between text-secondary" style="font-size: 0.8rem; ">
+                <p>By @Model.TutorFullName</p>
+                <p>@Model.Duration</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p class="fw-bold " style="font-size: 1.2rem;">N @Model.Price</p>
+                <p class="">4.5</p>
+            </div>
+        </div>
+    </a>
+</div>

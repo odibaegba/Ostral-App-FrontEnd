@@ -1,0 +1,122 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Ostral Learning Platform";
+    Layout = "_Layout";
+}
+
+<body>
+
+
+    <!--Front Section-->
+    <partial name="~/Views/Shared/Components/_FrontDeskPartial.cshtml" />
+
+    <!--Courses-->
+    <partial name="~/Views/Shared/Components/_CoursesPartial.cshtml" />
+
+    <!--Categories-->
+    <partial name="~/Views/Shared/Components/_CategoriesPartial.cshtml" />
+
+    <!--Popular Courses-->
+
+    <section class="#">
+        <div class="container align-items-center pt-5">
+
+            <div class="row">
+                <div class="mb-3 text-center">
+                    <h1 class="pt-5">Popular Courses</h1>
+                    <p class="py-3">
+                        Lorem ipsum dolor sit amet consectetur.
+                        Quam neque mattis interdum feugiat ac accumsan ornare sit neque.
+                        Tempus imperdiet varius vitae a.
+                    </p>
+                </div>
+            </div>
+
+
+
+            <ul class="list-inline list-unstyled text-center py-3">
+                
+                <li class="list-inline-item">
+                    <a asp-controller="Course" asp-action="Index" class="btn btn-primary d-inline-block mt-2">All</a>
+                </li>
+
+                @foreach (var category in @Model.Categories.Data!)
+                {
+                    <li class="list-inline-item">
+                        <a asp-action="ShowCategoryCourses" asp-controller="CategoryCourse" asp-route-categoryId="@category.Id" class="btn btn-outline-primary d-inline-block mt-2">@category.Name</a>
+                    </li>
+                }
+            </ul>
+        
+            <div class="row row-cols-3 g-3">
+                @foreach (var course in Model.PopularCourses.Data!)
+                {
+                    <partial name="Components/CourseListItem" model="@course" />
+                }
+            </div>
+
+      </section>
+
+    <!--Subscription-->
+
+    <section class="#login">
+
+        <div class="container py-5">
+            <div class="" style="background-image: url(/images/WallpaperDog.png);
+          ">
+                <div class=" text-white p-5 mb-3">
+                    <h2 class="pt-3">Don't Sleep on This.</h2>
+                    <p class="py-3 bg-dark col-lg-4">
+                        Create your free account now and get access to immediate
+                        100s of free online courses
+                    </p>
+                    <div class="row bg-light py-3 mb-2 col-lg-6">
+                        <input type="text" readonly class="col col-lg-3 m-2 " id="staticEmail2" placeholder="Email">
+                        <input type="password" class="col col-lg-3 m-2" id="inputPassword2" placeholder="Password">
+                        <button type="submit" class="col col-lg-4 btn btn-primary m-2">Subscribe</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--Teachers-->
+
+
+
+    <div class="container py-5">
+        <div class="mb-3 text-center">
+            <h1 class="pt-5">Meet The Teachers</h1>
+            <p class="py-3">
+                Lorem ipsum dolor sit amet consectetur.
+                Quam neque mattis interdum feugiat ac accumsan ornare sit neque.
+                Tempus imperdiet varius vitae a.
+            </p>
+        </div>
+
+        <section class="#instructors">
+
+            <div class="row row-cols-3" style="width:auto">
+
+
+                @foreach(var tutor in Model.Tutors.Data!)
+                {
+                    <div class="col text-center">
+                        <div class="p-3">
+                            <img src="@tutor.ImageUrl" class="img-fluid rounded-circle thumbnail" style="aspect-ratio: 1/1; width: 15rem;" />
+                            <a href="#" class="text-dark" id="obianuju">
+                                <p class="h4">@tutor.FullName</p>
+                                <p class="small">@tutor.Profession</p>
+                            </a>
+                        </div>
+                    </div>
+                    @*<partial name="~ /Views/Shared/Components/_TutorsPartial.cshtml" model="tutor" />*@
+                }
+
+              </div>
+        
+          </section>
+</body>
+

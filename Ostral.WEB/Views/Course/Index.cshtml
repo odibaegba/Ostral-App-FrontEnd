@@ -1,0 +1,31 @@
+﻿@model CoursesVM
+
+@{
+    ViewBag.Title = "Courses";
+}
+
+<section class="container mt-5">
+    <img class="rounded-sm img-fluid w-100" src="/images/Rectangle 23.png" alt="">
+</section>
+
+<section class="container mt-5">
+    <div class="row">
+        <div class="col-3">
+            <partial name="Components/CategorySidebar" model="@Model.Categories"/>
+        </div>
+
+        <div class="col-9 ps-4">
+            @if (!string.IsNullOrWhiteSpace(Model.CategoryName))
+            {
+                <h4 class="fw-bold">@Model.CategoryName</h4>
+            }
+
+            <div class="row row-cols-3 g-3">
+                @foreach (var course in Model.Courses.Data.PageItems)
+                {
+                    <partial name="Components/CourseListItem" model="course"/>
+                }
+            </div>
+        </div>
+    </div>
+</section>

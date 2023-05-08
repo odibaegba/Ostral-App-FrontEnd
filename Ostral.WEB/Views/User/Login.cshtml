@@ -1,0 +1,76 @@
+﻿@model LoginVM
+<link rel ="stylesheet"  href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel ="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel ="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"  integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e"  crossorigin="anonymous">
+<div id ="main">
+    <div class ="logo">
+        <i class ="bi bi-mortarboard-fill"  style="font-size:48px"></i></div>  
+        <div class ="text">
+            <h1 class ="text-name">Ostral</h1>      
+            <p class ="sub"> Studivacity</p>  
+            </div>
+            </div> <div class ="container">
+                 <div class ="row">
+                   <div class ="col-md-6 offset-md-3">
+                      <div class ="card my-5">
+                        <form class ="card-body cardbody-color p-lg-5"  asp-controller="User"  asp-action="Login"  method="post">
+                    @* @<div class="text-danger" asp-validation-summary="All"></div>@*@                    
+                    <h2 class ="text-center text-dark mt-5">
+                                      Hi, Welcome back
+                             </h2><div class ="form-group">                      
+                             <label for ="Email">Email</label>                        
+                             <div class ="input-group">                            
+                             <span class ="input-group-addon"><i class =" bi bi-envelope"></i></span>  
+                             <input asp-for ="Email"  class="form-control"  placeholder="Enter your email"   />
+                         </div>
+                             <span asp-validation-for ="Email"  class="text-danger"></span>
+                         </div>
+                         <div class ="form-group">     
+                             <label asp-for ="Password">Password</label>
+                             <div class ="input-group">     
+                                 <span class ="input-group-addon"><i class ="bi bi-key"></i></span> 
+                                 <input asp-for ="Password"  class="form-control"  placeholder="Enter your password"   />
+                             </div>        
+                             <span asp-validation-for ="Password"  class="text-danger"></span> 
+                             </div>
+                             
+                             <div class ="text-center"><button type ="submit"  class=" px-5 mb-5 w-100"  id="btn-submit">Login </button></div>
+                             <div class ="form-text text-center mb-5 text-dark">   
+                                 Don't have an account? <a href ="/Register"  class="signUp-text"> Create account</a>  
+                                 </div>   
+                                 </form> 
+                                 </div>     
+                                 </div>   
+                                 </div>
+                                 </div> 
+
+<div class="col-md-6">
+        <h1>External Login</h1>
+        <hr />
+        @{
+            if (Model.ExternalLogins.Count == 0)
+            {
+                <div>No external logins configured</div>
+            }
+            else
+            {
+                <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
+                    <div>
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" class="btn btn-primary" style="width:auto"
+                                    name="provider" value="@provider.Name"
+                                    title="Login using your @provider.DisplayName account">
+                                @provider.DisplayName
+                            </button>
+                        }
+                    </div>
+                </form>
+            }
+        }
+    </div>
+
+        }
+    }
+                                                                                                                            </div>
+

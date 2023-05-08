@@ -1,0 +1,78 @@
+﻿@model LoginVM
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+
+
+<div id="main" class="mb-5">
+    <a asp-action="Index" asp-controller="Home" class="navbar-brand">
+        <img src="/images/logo2.svg" />
+    </a>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card my-5">
+                
+                <div style="font:12px">
+                    @if (ViewBag.LoginErrMsg)
+                    {
+                        <div class="d-flex justify-content-center ">
+                            <div style="width:100%; text-align:justify;" asp-validation-summary="All" class="alert alert-danger forgotPass-list-error" id="summary"></div>
+                        </div>
+                    }
+                </div>
+                
+                <form class="card-body cardbody-color p-lg-5" asp-controller="Auth" asp-action="Login" method="post">
+                    @* @<div class="text-danger" asp-validation-summary="All"></div>@*@
+                    <h2 class="text-center text-dark mt-5">
+                        Hi, Welcome back
+                    </h2>
+
+
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class=" bi bi-envelope"></i>
+                            </span>
+                            <input asp-for="Email" class="form-control" placeholder="Enter your email"/>
+
+
+                        </div>
+
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="bi bi-key"></i>
+                            </span>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password"/>
+
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="text-center">
+                        <button type="submit" class=" px-5 mb-5 w-100" id="btn-submit">Login </button>
+                    </div>
+                    <div class="form-text text-center mb-5 text-dark">
+                        Don't have an account? <a asp-controller="Auth" asp-action="Register" class="signUp-text"> Create account</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

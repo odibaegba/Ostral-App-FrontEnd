@@ -1,0 +1,35 @@
+﻿@model CoursesVM
+
+@{
+    ViewBag.Title = $"Category - {Model.CategoryName}";
+}
+
+@if (string.IsNullOrWhiteSpace(Model.CategoryImageUrl))
+{
+    <section class="container mt-5">
+        <img class="rounded-sm img-fluid w-100" src="@Model.CategoryImageUrl" alt="">
+    </section>
+}
+
+
+<section class="container mt-5">
+    <div class="row">
+        <div class="col-3">
+            <partial name="Components/CategorySidebar" model="@Model.Categories"/>
+        </div>
+
+        <div class="col-9 ps-4">
+            @if (!string.IsNullOrWhiteSpace(Model.CategoryName))
+            {
+                <partial name="Components/SectionHeader" model="@Model.CategoryName"/>
+            }
+
+            <div class="row row-cols-3 g-3">
+                @foreach (var course in Model.Courses.Data.PageItems)
+                {
+                    <partial name="Components/CourseListItem" model="course"/>
+                }
+            </div>
+        </div>
+    </div>
+</section>

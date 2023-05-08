@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CommentListItem>
+<link rel ="stylesheet"  href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel ="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel ="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"  integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e"  crossorigin="anonymous">
+
+        <h6>Comments</h6>
+        <div class="comment">
+
+
+    @foreach (var comment in Model)
+    {
+        <div class="allcomment">
+            <p class="day">@comment.CreatedAt</p>
+            <p>@comment.Text</p>
+        </div>
+        <div class="commentIcons">
+            <button class="btn"> <i class="bi bi-chat-left"></i></button>
+            <form method="post" action="@Url.Action("ToggleLike")" class="like-form">
+
+            <button class="btn"><i class="bi bi-heart" id="likeIcon"></i></button>
+            </form>
+        </div>
+    }
+        </div>
+        <div class="convo">
+            <form method="post"asp-controller="Comment" asp-action="AddComment">
+                <div>
+                    <h2>Drop a conversation</h2>
+                    <p>Type Comment</p>
+                    <textarea class="commentBody" name="commentBody" required placeholder="Write here..."></textarea>
+                </div>
+                <button type="submit"  class="comment-btn">Post comment</button>
+            </form>
+        </div>

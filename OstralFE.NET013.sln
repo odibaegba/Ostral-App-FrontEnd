@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ostral.WEB", "Ostral.WEB\Ostral.WEB.csproj", "{F3F3301E-278B-425C-9F41-EFF4C41B64D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ostral.Core", "Ostral.Core\Ostral.Core.csproj", "{32700F69-230C-4392-A0F8-9F8682576AC9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ostral.Domain", "Ostral.Domain\Ostral.Domain.csproj", "{AA3FC5D2-3BC1-453A-8AEF-1A67FAC0C805}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ostral.Infrastructure", "Ostral.Infrastructure\Ostral.Infrastructure.csproj", "{6B48E26B-5A1A-4DB7-8491-48B8B8715E76}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AE874324-1C80-4315-93BC-5007B3E37A6A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ostral.ConfigOptions", "Ostral.ConfigOptions\Ostral.ConfigOptions.csproj", "{79651B02-FB67-4C4E-ADF7-5C599C19F5A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3F3301E-278B-425C-9F41-EFF4C41B64D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3F3301E-278B-425C-9F41-EFF4C41B64D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3F3301E-278B-425C-9F41-EFF4C41B64D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3F3301E-278B-425C-9F41-EFF4C41B64D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32700F69-230C-4392-A0F8-9F8682576AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32700F69-230C-4392-A0F8-9F8682576AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32700F69-230C-4392-A0F8-9F8682576AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32700F69-230C-4392-A0F8-9F8682576AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA3FC5D2-3BC1-453A-8AEF-1A67FAC0C805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA3FC5D2-3BC1-453A-8AEF-1A67FAC0C805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA3FC5D2-3BC1-453A-8AEF-1A67FAC0C805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA3FC5D2-3BC1-453A-8AEF-1A67FAC0C805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B48E26B-5A1A-4DB7-8491-48B8B8715E76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B48E26B-5A1A-4DB7-8491-48B8B8715E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B48E26B-5A1A-4DB7-8491-48B8B8715E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B48E26B-5A1A-4DB7-8491-48B8B8715E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE874324-1C80-4315-93BC-5007B3E37A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE874324-1C80-4315-93BC-5007B3E37A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE874324-1C80-4315-93BC-5007B3E37A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE874324-1C80-4315-93BC-5007B3E37A6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79651B02-FB67-4C4E-ADF7-5C599C19F5A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79651B02-FB67-4C4E-ADF7-5C599C19F5A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79651B02-FB67-4C4E-ADF7-5C599C19F5A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79651B02-FB67-4C4E-ADF7-5C599C19F5A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {640E748D-6D46-4CB4-9941-16F7BE9D092A}
+	EndGlobalSection
+EndGlobal

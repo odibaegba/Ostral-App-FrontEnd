@@ -1,0 +1,121 @@
+﻿@model CourseDetailsVM
+
+@{
+    ViewBag.Title = "EnrollForACourse";
+    // var parms = new Dictionary<string, string>
+    //            {
+    //                { "studentId", "11" },
+    //                { "courseId", Model.Course.Id }
+    //            };
+}
+
+<div class="container mt-5">
+    <section class="d-flex flex-column align-items-start gap-3" style="width: 100%; height: 215px;">
+        <div class="d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 210px; background: url(@Model.Course.ImageUrl); background-repeat: no-repeat; background-size: cover; border-radius: 24px;">
+            <div class="d-flex flex-column justify-content-center align-items-center" style="width: 653px; height: 83px;">
+                <div style="width: 750px; height: 38px; font-style: normal; font-weight: 700; font-size: 32px; line-height: 140%;letter-spacing: 0.25px; text-align: center; color: #FFFFFF;">
+                    @Model.Course.Name
+                </div>
+                <div style="width: 460px; height: 24px; font-style: normal; font-weight: 400; font-size: 24px; line-height: 140%; text-align: center; color: #FFFFFF;">
+                    @Model.Course.Description
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @if (Model.Course.IsRegistered)
+    {
+        <section class="container mt-3">
+            <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" asp-controller="Course" asp-action="Details" asp-route-id="@Model.Course.Id">Chapters</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Files</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Comments</a>
+            </li>
+        </ul>
+    </section>
+    }
+
+    <section class="d-flex flex-column align-items-start justify-content-between gap-4 mt-4 bg-white rounded p-4">
+        <h2 class="">
+            @Model.Course.Name
+        </h2>
+        <div class="d-flex flex-row align-items-start gap-4">
+            @foreach (var c in new string[]
+            {
+            $"{Model.Course.StudentList.Count} students",
+            $"{Model.Course.Duration / 24}hr{Model.Course.Duration % 24}mins", $"{Model.Course.ContentList.Count} chapters"
+            })
+            {
+                <div style="width: 90px; height: 22px; font-style: normal; font-weight: 400; font-size: 16px; line-height: 140%; letter-spacing: 0.15px; color: #98A2B3;">
+                    @c
+                </div>
+            }
+        </div>
+        <div class="d-flex flex-row align-items-center justify-content-between" style="width: 92%; height: 56px;">
+            <div class="d-flex flex-row align-items-centre justify-content-between" style="width: 224px; height: 56px;">
+                <div style="width: 56px; height: 56px; color: #D9D9D9;">
+                    <img src=@Model.Course.TutorImageUrl style="border-radius: 50%; width: 56px; height: 56px;" />
+                </div>
+                <div class="d-flex flex-column align-items-start" style="width: 152px; height: 56px;">
+                    <p style="width: 152px; height: 34px; font-style: normal; margin-bottom: 0px; font-weight: 700; font-size: 20px; line-height: 140%; color: #101828;">
+                        @Model.Course.TutorFullName
+                    </p>
+                    <p style="width: 152px; height: 22px; font-style: normal; font-weight: 400; font-size: 16px; line-height: 140%; color: #667085;">
+                        @Model.Course.TutorDescription
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="d-flex flex-column align-items-center justify-content-center gap-4 mt-4" style="padding: 32px; width: 100%; background-color: hsl(260, 90%, 96%);">
+        <div class="d-flex flex-column align-items-start justify-content-between" style="width: 92%; gap: 24px;">
+            @foreach (var c in Model.Course.ContentList.ToList())
+            {
+                var contents = Model.Course.ContentList.ToList();
+                int count = contents.IndexOf(c) + 1;
+                <div class="d-flex flex-row align-items-start justify-content-between">
+                    <div class="d-flex flex-row align-items-start justify-content-center" style="width: 22px; height: 42px; gap: 8px;">
+                        <div style="width: 22px; height: 28px; background: url('https://res.cloudinary.com/drixwe3ie/image/upload/v1678843812/Vector_2_ygzuyw.png')"></div>
+                    </div>
+                    <a asp-controller="Content" asp-action="ShowContent" asp-route-courseId="@Model.Course.Id" asp-route-contentId="@c.Id">
+                        <div>
+                            <div style="font-style: normal; font-weight: 600; font-size: 16px; line-height: 140%; letter-spacing: 0.15px; color: #101828; width: 170px; height: 22px;">
+                                @count<span>.</span> @c.Title
+                            </div>
+                            <div style="width: 50px; height: 20px; font-style: normal; font-weight: 400; font-size: 14px; line-height: 20px; color: #98A2B3;">
+                                @TimeSpan.FromSeconds(c.Duration).ToString(@"m\:ss")
+                            </div>
+                        </div>
+
+                    </a>
+                </div>
+            }
+        </div>
+
+        @if (!Model.Course.IsRegistered)
+        {
+            <a class="d-flex flex-row justify-content-center align-items-center btn btn-primary border-0" style="width: 343px; height: 44px; border-radius: 6px; color: #FFFFFF; background: #6938EF; border-radius: 6px; padding: 8px; gap: 8px;"
+           asp-route-courseID="@Model.Course.Id" asp-route-studentID="@ViewBag.UserId"
+           asp-action="EnrollForACourse" asp-controller="StudentCourse">
+                Buy Course
+            </a>
+        }
+    </section>
+
+    <section class="mt-5">
+        <h4 class="mb-2">Related Courses</h4>
+        <div class="row row-cols-4 g-3">
+
+            @foreach (var course in @Model.RelatedCourses)
+            {
+                <partial name="Components/CourseListItem" model="course" />
+            }
+        </div>
+    </section>
+</div>

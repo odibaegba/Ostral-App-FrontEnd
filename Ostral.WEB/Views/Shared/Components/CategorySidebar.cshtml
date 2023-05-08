@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Ostral.Core.Services.CategoryDto>
+
+
+<div class="shadow-sm p-0 rounded bg-white">
+    <div class="bg-light px-3 py-2">
+        <p class="m-0 text-dark">Filters</p>
+    </div>
+    <div class="hover-row">
+        <a class="py-2 px-3 w-100 text-decoration-none text-muted d-inline-block">Popular Courses</a>
+    </div>
+    <div class="hover-row">
+        <a class="py-2 px-3 w-100 text-decoration-none text-muted d-inline-block">Newest</a>
+    </div>
+    <div class="hover-row">
+        <a class="py-2 px-3 w-100 text-decoration-none text-muted d-inline-block">Free</a>
+    </div>
+    <div class="hover-row">
+        <a class="py-2 px-3 w-100 text-decoration-none text-muted d-inline-block">Paid</a>
+    </div>
+</div>
+
+<div class="shadow-sm p-0 mt-4 rounded bg-white">
+    <div class="bg-light px-3 py-2">
+        <p class="m-0 text-dark">Categories</p>
+    </div>
+    @foreach (var category in Model)
+    {
+        <div class="hover-row">
+            <a class="py-2 px-3 w-100 text-decoration-none text-muted d-inline-block" asp-action="ShowCategoryCourses" asp-controller="CategoryCourse" asp-route-categoryId="@category.Id">@category.Name</a>
+        </div>
+    }
+</div>
